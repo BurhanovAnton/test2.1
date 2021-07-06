@@ -19,5 +19,7 @@ from mane import views as mane_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', mane_views.main)
+    path('', mane_views.main),
+    path('photo/', mane_views.photo),
+    path('album/', mane_views.album),
 ]

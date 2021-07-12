@@ -1,0 +1,8 @@
+venv/
+.idea/
+.env
+__pycashe__/
+*.pic
+env
+*.log
+

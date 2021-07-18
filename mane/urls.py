@@ -6,6 +6,6 @@ app_name = 'album'
 
 urlpatterns = [
     path('photo/<pk>/', mane_views.photo, name='photo'),
-    path('', mane_views.album, name='album')
+    path('<pk>/', mane_views.album, name='album')
 ]
 

@@ -1,5 +1,6 @@
 import datetime
 
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from mane.models import Album, Photo
@@ -13,12 +14,8 @@ def main(request):
 
 
 def photo(request, pk):
-    current_photo = {}
-    albums = []
-    for album_item in albums:
-        if album_item['id'] == int(pk):
-            current_photo = album_item
-            break
+    current_photo = Photo.objects.get(pk=pk)
+
     context = {
         'title': '123213',
         'photo': current_photo
@@ -26,7 +23,7 @@ def photo(request, pk):
     return render(request, 'mane/photo.html', context)
 
 
-def album(request,pk):
+def album(request, pk):
     album_item = Album.objects.get(pk=pk)
     photos = Photo.objects.filter(album__pk=pk)
     context = {
@@ -35,3 +32,9 @@ def album(request,pk):
         'photos': photos
     }
     return render(request, 'mane/album.html', context)
+
+def photo_like(request, pk):
+    photo_item = Photo.objects.get(pk=pk)
+    photo_item.liked += 1
+    photo_item.save()
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])

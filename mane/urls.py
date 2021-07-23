@@ -10,3 +10,8 @@ urlpatterns = [
     path('like/<pk>/', mane_views.photo_like, name='like_photo')
 ]
 
+app_name = 'news'
+
+urlpatterns = [
+    path('news/<pk>/', mane_views.news, name='news'),
+]

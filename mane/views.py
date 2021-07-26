@@ -13,9 +13,15 @@ def main(request):
     return render(request, 'mane/index.html', context)
 
 
+def albums(request):
+    context = {
+        'albums': Album.objects.all()
+    }
+    return render(request, 'mane/index.html', context) #album templates
+
+
 def photo(request, pk):
     current_photo = Photo.objects.get(pk=pk)
-
     context = {
         'title': '123213',
         'photo': current_photo
@@ -38,3 +44,4 @@ def photo_like(request, pk):
     photo_item.liked += 1
     photo_item.save()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+

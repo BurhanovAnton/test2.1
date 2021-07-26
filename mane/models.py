@@ -28,16 +28,6 @@ class Photo(models.Model):
         verbose_name_plural = 'фотографии'
 
 
-class News_Bloc(models.Model):
-    title = models.CharField(max_length=150, verbose_name='Заголовок')
-    description = models.TextField(blank=True, null=True, verbose_name='Введение')
 
-class News(models.Model):
-    news_type = models.CharField(max_length=150, verbose_name='Тип новости')
-    title = models.CharField(max_length=150, verbose_name='Заголовок новости')
-    photo = models.ImageField(upload_to='photos/', verbose_name='Фото')
-    news = models.TextField(blank=True, null=True, verbose_name='Описание новости')
-    date_creat = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания',blank=True, null=True)
-    date_public = models.DateTimeField(auto_now_add=True, verbose_name='Дата публикации',blank=True, null=True)
 
 

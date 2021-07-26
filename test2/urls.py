@@ -20,12 +20,13 @@ from django.urls import path, include
 
 from mane import views as mane_views
 
-urlpatterns = (
+urlpatterns = [
     path('admin/', admin.site.urls),
     path('', mane_views.main, name='index'),
     path('album/', include('mane.urls', namespace='album')),
-    path('news/', include('mane.urls', namespace='news')),
-)
+    path('news/', include('news.urls', namespace='news')),
+]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

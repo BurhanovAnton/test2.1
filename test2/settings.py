@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "mane",
     "news",
+    'authapp',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'test2.wsgi.application'
+
+AUTH_USER_MODEL = 'authapp.BlogUser'
 
 
 # Database

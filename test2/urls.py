@@ -25,6 +25,7 @@ urlpatterns = [
     path('', mane_views.main, name='index'),
     path('album/', include('mane.urls', namespace='album')),
     path('news/', include('news.urls', namespace='news')),
+    path('auth/', include('authapp.urls', namespace='authapp')),
 ]
 
 

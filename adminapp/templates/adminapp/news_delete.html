@@ -1,0 +1,18 @@
+{% extends 'adminapp/base.html' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                Уверны что хотите удалить новость "{{ object.title }}"?
+                <form method="post">
+                    {% csrf_token %}
+                    <input tupe="submit" value="Да уверен!" class="btn btn-danger"/>
+                </form>
+                <a href="{% url 'adminapp:news_list' %}" class="btn btn-success">Не уверен что хочу этого</a>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

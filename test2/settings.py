@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "mane",
     "news",
     'authapp',
+    'adminapp',
 ]
 
 MIDDLEWARE = [

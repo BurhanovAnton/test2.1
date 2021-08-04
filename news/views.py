@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.shortcuts import render
 
 import news
@@ -6,8 +8,9 @@ from news.models import News, Category
 
 def news_list_all(request):
     # все новости
+    now = datetime.now()
     context = {
-        'news': News.objects.all()
+        'news': News.objects.filter(publish_at__lte=now)
     }
     return render(request, 'news/news.html', context)
 

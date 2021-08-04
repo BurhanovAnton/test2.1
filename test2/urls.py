@@ -22,6 +22,7 @@ from mane import views as mane_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('myadmin/', include('adminapp.urls', namespace='adminapp')),
     path('', mane_views.main, name='index'),
     path('album/', include('mane.urls', namespace='album')),
     path('news/', include('news.urls', namespace='news')),

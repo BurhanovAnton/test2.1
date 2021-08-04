@@ -19,6 +19,7 @@ class News (models.Model):
     image = models.ImageField(upload_to='news/', verbose_name='Картинка')
     created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     publish_at = models.DateTimeField(verbose_name='Дата публикации')
+    is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return  self.title
@@ -26,3 +27,7 @@ class News (models.Model):
     class Meta:
         verbose_name = 'новость'
         verbose_name_plural = 'новости'
+
+    def delete(self, using=None, keep_parents=False):
+        self.is_active = False
+        self.save()

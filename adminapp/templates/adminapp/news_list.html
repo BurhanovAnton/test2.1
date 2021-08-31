@@ -1,42 +1,44 @@
 {% extends 'adminapp/base.html' %}
 {% block content %}
     <div class="row">
-    <div class="col-12">
-        <a class="btn btn-info" href="{% url 'adminapp:news_create' %}">добавить новость</a>
-    </div>
-    <div class="col-12">
-        <table class="table">
-            <thead>
-            <th>#</th>
-            <th>Статус</th>
-            <th>Заголовок</th>
-            <th>Категория</th>
-            <th>Дата публикации</th>
-            <th>Дата публикации</th>
-            </thead>
-            <tbody>
-            {% for object in object_list %}
+        <div class="col-12">
+            <a class="btn btn-info" href="{% url 'adminapp:news_create' %}">добавить новость</a>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
                 <tr>
-                <td>{{ object.pk }}</td>
-                <td>
-                    {% if object.is_active %}
-                        отображается
-                    {% else %}
-                        не  отображается
-                    {% endif %}
-                </td>
-                <td>{{ object.title }}  </td>
-                <td>{{ object.category  }}</td>
-                <td>{{ object.publish_at|date:"d-m-y" }} </td>
-                <td>
-                    <a class="btn btn-warning" href="{% url 'adminapp:news_update' object.pk %}"> Изменить</a>
-                    <a class="btn btn-danger" href="{% url 'adminapp:news_delete'  object.pk %}"> Удалить</a>
-                </td>
+                    <th>#</th>
+                    <th>Статус</th>
+                    <th>Заголовок</th>
+                    <th>Категория</th>
+                    <th>Дата публикации</th>
+                    <th>Дата публикации</th>
                 </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                {% for object in object_list %}
+                    <tr>
+                        <td>{{ object.pk }}</td>
+                        <td>
+                            {% if object.is_active %}
+                                отображается
+                            {% else %}
+                                не  отображается
+                            {% endif %}
+                        </td>
+                        <td>{{ object.title }}  </td>
+                        <td>{{ object.category }}</td>
+                        <td>{{ object.publish_at|date:"d-m-y" }} </td>
+                        <td>
+                            <a class="btn btn-warning" href="{% url 'adminapp:news_update' object.pk %}"> Изменить</a>
+                            <a class="btn btn-danger" href="{% url 'adminapp:news_delete'  object.pk %}"> Удалить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
     </div>
 

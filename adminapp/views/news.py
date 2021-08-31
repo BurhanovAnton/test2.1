@@ -6,7 +6,7 @@ from news.models import News
 
 def news_list(request):
     content = {
-    'object_list': News.objects.all()
+        'object_list': News.objects.all()
     }
     return render(request, 'adminapp/news_list.html', content)
 
@@ -57,3 +57,5 @@ def news_delete(request, pk):
         'object': new_current_item
     }
     return render(request, 'adminapp/news_delete.html', content)
+
+

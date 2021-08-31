@@ -1,0 +1,17 @@
+{% extends 'adminapp/base.html' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-12">
+        <div class="card>">
+            <div class="card-body">
+               <p>Название фото:{{ object.title }}</p>
+               <p>Описание: {{ object.description }}</p>
+               <p>Количество лайков: {{ object.liked }}</p>
+                <P>Находится в альбоме: {{ object.album }}</P>
+            </div>
+        </div>
+    </div>
+    </div>
+    <a href="{% url 'adminapp:album_photo_list' object.album.pk %}">Назад</a>
+{% endblock  %}

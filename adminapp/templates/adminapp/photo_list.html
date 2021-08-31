@@ -1,0 +1,55 @@
+{% extends 'adminapp/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <a class="btn btn-info" href="{% url 'adminapp:photo_create' album_pk %}">добавить фото</a>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Статус</th>
+                    <th>Заголовок</th>
+                    <th>Альбом</th>
+                    <th>Дата создания</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for object in object_list %}
+                    <tr>
+                        <td>{{ object.pk }}</td>
+                        <td>
+                            {% if object.is_active %}
+                                отображается
+                            {% else %}
+                                не  отображается
+                            {% endif %}
+                        </td>
+{#                        <td>{{ object.title }}  </td>#}
+                        <td> <a class="btm btm-link" href="{% url 'adminapp:photo_read' object.pk %}">
+                                {{ object.title }}
+                            </a>
+                        </td>
+                        <td> {{ object.album }} </td>
+                        <td>{{ object.date|date:"d-m-y" }} </td>
+                        <td>
+                            <a class="btn btn-warning" href="{% url 'adminapp:photo_update' object.pk %}"> Изменить</a>
+                            {% if object.is_active %}
+                                <a class="btn btn-danger" href="{% url 'adminapp:photo_delete' object.pk %}">
+                                    Удалить</a>
+                            {% else %}
+                                <a class="btn btn-success" href="{% url 'adminapp:photo_delete' object.pk %}">
+                                    Востановить</a>
+                            {% endif %}
+
+
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

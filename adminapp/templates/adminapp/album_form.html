@@ -1,0 +1,18 @@
+{% extends 'adminapp/base.html' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-12">
+        <div class="card>">
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="сохранить" class="btn btn-primary">
+                    <a href="{% url 'adminapp:album_list' %}" class="btn btn-warning">назад</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock  %}

@@ -1,0 +1,26 @@
+{% extends 'adminapp/base.html' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-12">
+        <div class="card>">
+            <div class="card-body">
+               <p>Название:{{ object.title }}</p>
+               <p>Категория:{{ object.category }}</p>
+               <p>Описание: {{ object.body }}</p>
+               <p>Количество фото: {{ object.photo_set.count }}</p>
+               <p>Количество создания: {{ object.created_at }}</p>
+               <p>Количество публикации: {{ object.publish_at }}</p>
+               <p>Новость в стопе?
+               {% if object.is_active %}
+                   Нет
+               {% else %}
+                   Да
+               {% endif %}
+               </p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <a href="{% url 'adminapp:news_list'%}">Назад</a>
+{% endblock  %}

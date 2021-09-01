@@ -29,5 +29,8 @@ class News (models.Model):
         verbose_name_plural = 'новости'
 
     def delete(self, using=None, keep_parents=False):
-        self.is_active = False
+        if self.is_active:
+            self.is_active = False
+        else:
+            self.is_active = True
         self.save()

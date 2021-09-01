@@ -3,9 +3,9 @@ from django.views.generic import UpdateView
 from django.views.generic import DeleteView
 from django.views.generic import CreateView
 from django.views.generic import DetailView
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse
 from adminapp.forms import PhotoEditForm
-from mane.models import Album, Photo
+from mane.models import Photo
 
 
 class PhotoCreateView(CreateView):

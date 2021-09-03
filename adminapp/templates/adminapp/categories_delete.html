@@ -1,0 +1,26 @@
+{% extends 'adminapp/base.html' %}
+
+{% block content %}
+    <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                {% if object.is_active %}
+                    Уверны что хотите удалить категорию "{{ object.title }}"?
+                    {% else %}
+                        Уверены что хотите восстановить актегорию "{{ object.title }}"?
+                    {% endif %}
+                        <form method="post">
+                            {% csrf_token %}
+                            {% if object.is_active %}
+                            <input type="submit" value="Да уверен, что хочу удалить!" class="btn btn-danger"/>
+                            {% else %}
+                            <input type="submit" value="Да уверен, что хочу восстановить!" class="btn btn-success"/>
+                            {% endif %}
+                        </form>
+                        <a href="{% url 'adminapp:categories_list' %}" class="btn btn-warning">Не уверен что хочу этого</a>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

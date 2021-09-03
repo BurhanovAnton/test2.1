@@ -27,11 +27,14 @@
                                 не  отображается
                             {% endif %}
                         </td>
-                        <td> <a class="btm btm-link" href="{% url 'adminapp:news_read' object.pk %}">
+                        <td><a class="btm btm-link" href="{% url 'adminapp:news_read' object.pk %}">
                             {{ object.title }}
                         </a>
                         </td>
-                        <td>{{ object.category }}</td>
+                        <td><a class="btm btm-link" href="{% url 'adminapp:categories_list' %}">
+                            {{ object.category }}
+                        </a>
+                        </td>
                         <td>{{ object.publish_at|date:"d-m-y" }} </td>
                         <td>
                             <a class="btn btn-warning" href="{% url 'adminapp:news_update' object.pk %}"> Изменить</a>
@@ -48,8 +51,5 @@
                 </tbody>
             </table>
         </div>
-
     </div>
-
-
 {% endblock %}

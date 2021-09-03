@@ -1,0 +1,70 @@
+{% extends 'adminapp/base.html' %}
+{% block content %}
+    <div class="row">
+        <div class="col-12">
+            <a class="btn btn-info" href="{% url 'adminapp:categories_create' %}">добавить категорию</a>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Название категории</th>
+                    <th>Количество новостей</th>
+                    <th>Дата последней публикации</th>
+                    <th>Состояние оображения</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for object in object_list %}
+                    <tr>
+                        <td>{{ object.pk }}</td>
+                        <td>{{ object.title }}  </td>
+                        <td>{{ object.news_set.count }}  </td>
+                        <td>
+{#                            {{ p = object.news_set.last('publish_at') }}#}
+{#                            {{ p.publish_at}}#}
+{#                            {{ Operation.object.filter(publish_at__in=publish_at).order_by('publish_at').last() }}#}
+{#                            {{ object.News.last('publish_at') }}#}
+{#                            {{ new_date_pablish = date_pablish.publish_at }}#}
+{#                            {{ new_date_pablish }}#}
+{#                            {{p = object.news.order_by('pk').last() }}#}
+{#                            {{ p.publish_at }}#}
+                            {{ test = News.objects.all().order_by('pk').last()  }}
+
+{#                            {{ date_pablish = object.news.last() }}#}
+{#                            {{ new_date_pablish = date_pablish. }}#}
+{#                            {{ new_date_pablish }}#}
+{#                            {{ object.news.publish_at }}#}
+{#                            {{ object.news.latest('publish_at')  }}#}
+{#                            {{ date_pablish.publish_at }}#}
+{#                            {% for object is object list %}#}
+{#                            {if object.publish_at #}
+                        </td>
+                        <td>
+                            {% if object.is_active %}
+                                отображается
+                            {% else %}
+                                не отображается
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a class="btn btn-warning" href="{% url 'adminapp:categories_update' object.pk %}">
+                                Изменить</a>
+                            {% if object.is_active %}
+                                <a class="btn btn-danger" href="{% url 'adminapp:categories_delete' object.pk %}">
+                                    Удалить </a>
+                            {% else %}
+                                <a class="btn btn-success" href="{% url 'adminapp:categories_delete' object.pk %}">
+                                    Восстановить</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+

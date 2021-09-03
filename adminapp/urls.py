@@ -23,4 +23,8 @@ urlpatterns = [
     path('photo/<pk>/delete/', admin_views.PhotoDeleteView.as_view(), name='photo_delete'),
     path('photo/<pk>/read/', admin_views.PhotoReadView.as_view(), name='photo_read'),
 
+    path('categories/', admin_views.CategoriesListView.as_view(), name='categories_list'),
+    path('categories/<pk>/update/', admin_views.CategoriesUpdateView.as_view(), name='categories_update'),
+    path('categories/create/', admin_views.CategoriesCreateView.as_view(), name='categories_create'),
+    path('categories/<pk>/delete/', admin_views.CategoriesDeleteView.as_view(), name='categories_delete'),
 ]

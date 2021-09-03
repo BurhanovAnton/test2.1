@@ -2,7 +2,7 @@ from django.db import models
 
 class Category(models.Model):
     title = models.CharField(max_length=150, verbose_name='Название категории новостей')
-    is_activ =  models.BooleanField(default=True, verbose_name='Отображать')
+    is_active =  models.BooleanField(default=True, verbose_name='Отображать')
 
     def __str__(self):
         return  self.title
@@ -10,6 +10,14 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'категорию'
         verbose_name_plural = 'категории'
+
+
+    def delete(self, using=None, keep_parents=False):
+        if self.is_active:
+            self.is_active = False
+        else:
+            self.is_active = True
+        self.save()
 
 class News (models.Model):
     title = models.CharField(max_length=150, verbose_name='Заголовок')
